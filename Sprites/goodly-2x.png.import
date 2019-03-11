@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/goodly-2x.png-318a4d4ddce71bc9fb72696b5f4452eb.stex"
+path="res://.import/goodly-2x.png-e6190e32b1cc356fa777ed45babcead4.stex"
 
 [deps]
 
-source_file="res://goodly-2x.png"
-dest_files=[ "res://.import/goodly-2x.png-318a4d4ddce71bc9fb72696b5f4452eb.stex" ]
+source_file="res://Sprites/goodly-2x.png"
+dest_files=[ "res://.import/goodly-2x.png-e6190e32b1cc356fa777ed45babcead4.stex" ]
 
 [params]
 
