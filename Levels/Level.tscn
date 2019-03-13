@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Sprites/goodly-2x.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Crate.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/See-Saw.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/See-Saw.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Player_v2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -133,6 +133,9 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 1/z_index = 0
 
+[sub_resource type="PhysicsMaterial" id=12]
+
+
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -147,9 +150,10 @@ position = Vector2( 855.464, 385.164 )
 [node name="Crate2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1100.21, 435.597 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 375.089, -353.186 )
-
-[node name="See-Saw" parent="." instance=ExtResource( 4 )]
+[node name="See-Saw" parent="." instance=ExtResource( 3 )]
 position = Vector2( 750.177, 473.652 )
+
+[node name="Player_v2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 440.798, 355.924 )
+physics_material_override = SubResource( 12 )
 

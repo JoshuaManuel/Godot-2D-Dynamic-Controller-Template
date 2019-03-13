@@ -1,20 +1,19 @@
 extends RigidBody2D
 
-const FLOOR = Vector2(0, -1)
-
-export var JUMP_HEIGHT = 1000
+export var WALK_ACCEL = 800.0
+export var WALK_DEACCEL = 800.0
+export var WALK_MAX_VELOCITY = 200.0
+export var AIR_ACCEL = 200.0
+export var AIR_DEACCEL = 200.0
+export var JUMP_VELOCITY = 1000
+export var STOP_JUMP_FORCE = 900.0
 export var JUMP_LIMIT = 2
 
-var WALK_ACCEL = 75
-var WALK_DEACCEL = 75
-var WALK_MAX_VELOCITY = 400.0
-
-var AIR_ACCEL = 50
-var AIR_DEACCEL = 50
-
+const FLOOR = Vector2(0, -1)
 var TERMINAL_VELOCITY = 10000
-
 var jumps_left = JUMP_LIMIT
+var is_falling = false
+var is_jumping = false
 
 func _integrate_forces(state):
 
@@ -28,15 +27,6 @@ func _integrate_forces(state):
 	var just_jumped = Input.is_action_just_pressed("ui_up")
 
 	# Find the floor
-
-	# 0. Make sure the player rigidbody2d in the inspector is set to monitor contacts and contacts reported is > 0. I recommend 10
-
-	# 1. Get all bodies we're colliding with
-
-	# 2. Get the normal of those bodies
-	# if any one of those is mostly on the floor, set the flags
-	# we do the dot product of the floor and colliding body, making sure we're mostly on the floor because 0.6 is greater than .5
-
 	var is_on_floor = false
 	var floor_index = -1
 
@@ -81,7 +71,7 @@ func _integrate_forces(state):
 	
 	# Handle how many jumps the player has left
 	if just_jumped && jumps_left > 1:
-		lin_vel.y = -JUMP_HEIGHT
+		lin_vel.y = -JUMP_VELOCITY
 		jumps_left -= 1
 
 	#Add gravity and apply the movement
